@@ -1,0 +1,20 @@
+# Data
+*.csv
+*.parquet
+*.zip
+data/
+
+# Model outputs and experiment tracking
+*.pt
+*.pkl
+*.onnx
+mlruns/
+mlartifacts/
+
+# Python and editor clutter
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+.DS_Store
