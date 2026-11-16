@@ -1,0 +1,16 @@
+name: fraudscore
+channels:
+  - conda-forge
+dependencies:
+  - python=3.14
+  - llvm-openmp          # needed by XGBoost on Mac
+  - pip
+  - pip:
+      - numpy==X
+      - pandas==X
+      - pyarrow==X       # for reading and writing Parquet
+      - scikit-learn==X
+      - xgboost==X
+      - torch==X
+      - mlflow==X
+      - joblib==X

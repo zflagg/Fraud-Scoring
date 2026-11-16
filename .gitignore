@@ -10,6 +10,7 @@ data/
 *.onnx
 mlruns/
 mlartifacts/
+*.db
 
 # Python and editor clutter
 __pycache__/

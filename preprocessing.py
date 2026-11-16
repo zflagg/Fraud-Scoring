@@ -2,10 +2,6 @@ import pandas as pd
 import numpy as np
 from config import NUM_COLS, CAT_COLS, TARGET
 
-# Auto log things to mlflow
-import mlflow
-mlflow.autolog()
-
 
 # FUNC: Time Split
 # DESC: It's crucial to keep track of time in this setting, since a random split will leak future behavior to the test set
@@ -28,7 +24,7 @@ def recall_at_fpr(y_true, y_score, max_fpr=0.01):
 
 def evaluate(y_true, y_score):
     return {"pr_auc": average_precision_score(y_true, y_score),
-            "recall@1%fpr": recall_at_fpr(y_true, y_score)}
+            "recall_at_1p_fpr": recall_at_fpr(y_true, y_score)} # fpr = false positive rate
 
 
 

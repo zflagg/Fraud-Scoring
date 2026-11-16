@@ -8,7 +8,7 @@ from config import NUM_COLS, CAT_COLS, TARGET
 
 df = pd.read_csv("train_transaction.csv")
 df["TransactionAmt"] = np.log1p(df["TransactionAmt"]) # Tames to skew of specific values
-
+df = df.sort_values("TransactionDT").head(100_000)
 
 train, val, test = preprocessing.time_split(df)
 
@@ -44,6 +44,8 @@ from xgboost import XGBClassifier
 # need categoreies to be learned from train only, then applied to val/test
 train_x, val_x, test_x = train.copy(), val.copy(), test.copy()
 for c in CAT_COLS:
+    for d in (train_x, val_x, test_x):
+        d[c] = d[c].astype("string")          # 111.0 becomes "111.0"; missing stays missing
     cats = train_x[c].astype("category").cat.categories
     for d in (train_x, val_x, test_x):
         d[c] = pd.Categorical(d[c], categories=cats)
